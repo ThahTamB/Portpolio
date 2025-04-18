@@ -12,7 +12,10 @@ module.exports = {
       lg: '18px',
       xl: '20px',
       xxl: '22px',
-      heading: '32px',
+      xxxl: '24px',
+      xxxxl: '26px',
+      heading: '40px',
+
     },
 
     colors: {
@@ -32,10 +35,16 @@ module.exports = {
         dark: '#495670',
       },
       white: '#e6f1ff',
+      blue: {
+        DEFAULT: '#00b8ff',
+        lighter: '#00deff',
+      },
       green: {
         DEFAULT: '#64ffda',
         tint: 'rgba(100,255,218,0.1)',
       },
+      pink: '#ef00ff',
+      orange:'#ff5700',
     },
 
     extend: {

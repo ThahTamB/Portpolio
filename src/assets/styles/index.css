@@ -10,18 +10,78 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html {
+  scroll-behavior: smooth !important;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: Arial, Helvetica, sans-serif, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+@layer base {
+  body {
+    @apply font-sans w-screen overflow-x-hidden !important;
+  }
+  main {
+    counter-reset: section;
+  }
+
+  h1 {
+    @apply text-slate-lightest font-semibold leading-1.1 !important;
+    font-size: clamp(30px, 8vw, 60px) !important;
+  }
+  h2 {
+    @apply flex items-center gap-x-2 mt-2.5 mb-5 text-slate-lightest font-semibold leading-1.1 overflow-hidden !important;
+    font-size: clamp(16px, 26px, 33px) !important;
+    counter-increment: section;
+  }
+
+  h2::before {
+    @apply self-stretch text-blue font-mono font-normal  !important;
+    /* font-size: clamp(theme(fontSize.md), 3vw, theme(fontSize.xl)) !important;
+    content: counter(section, decimal-leading-zero) '. '; */
+  }
+
+  h3 {
+    @apply text-slate-lightest font-semibold  duration-150  !important;
+    font-size: clamp(24px, 5vw, 28px) !important;
+  }
+
+  a {
+    @apply hover:text-blue;
+  }
+
+  p {
+    @apply text-slate text-lg mb-5 leading-1.3 laptop:text-xl;
+  }
+
+  ol {
+    counter-reset: item;
+  }
+
+  ol li {
+    @apply laptop:text-xs laptop:font-mono !important;
+    counter-increment: item;
+  }
+
+  ol li::before {
+    @apply text-blue font-mono font-normal;
+    content: counter(item, decimal-leading-zero) '. ';
+  }
+
+  ul {
+    @apply text-slate text-sm font-mono;
+  }
 }
 
 @layer components {
   .avatar::before {
-    @apply content-empty absolute block border-2 w-full h-full rounded-md border-green top-5 left-5 duration-200;
+    @apply content-empty absolute block border-2 w-full h-full rounded-md border-navy-lightest top-5 left-5 duration-200;
   }
   .avatar::after {
-    @apply content-empty z-10 block absolute w-full h-full bg-green/40 rounded-md  duration-200;
+    @apply content-empty z-10 block absolute w-full h-full bg-navy/40 rounded-md  duration-200;
   }
   .avatar {
     @apply hover:after:opacity-0 hover:before:top-4 hover:before:left-4;
@@ -31,11 +91,11 @@ code {
     @apply hover:after:opacity-0;
   }
   .project-image::after {
-    @apply content-empty z-10 block absolute inset-0 laptop:bg-green/30 rounded-md  duration-200;
+    @apply content-empty z-10 block absolute inset-0 laptop:bg-blue/30 rounded-md  duration-200;
   }
 
   .link {
-    @apply text-green bg-gradient-to-r from-green to-green bg-no-repeat duration-300 !important;
+    @apply text-blue bg-gradient-to-r from-blue to-blue bg-no-repeat duration-300 !important;
     background-position: 0 90%;
     background-size: 0 0.75px;
   }
@@ -60,5 +120,22 @@ code {
     @apply text-green;
     content: '▹ ';
   }
+
+  .custom-marker-1 li::before {
+    @apply text-blue;
+    content: '▹ ';
+  }
+
+  .custom-marker-2 li::before {
+    @apply text-pink;
+    content: '▹ ';
+  }
+
+  
+  .custom-marker-3 li::before {
+    @apply text-orange;
+    content: '▹ ';
+  }
 }
+
 
